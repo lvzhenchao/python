@@ -29,13 +29,19 @@ Student.set_score = set_score
 
 s3 = Student()
 s3.set_score(99)	
-print(s3.score
+print(s3.score)
 
 
 # __slots__限制实例的属性；比如只允许对Student实例添加name和age属性
+## 仅对当前实例起作用，继承的子类不起作用
 
 class StudentNew(object):
-	__slots__=('name', 'age')#只允许tuple定义允许绑定的属性名称
+	__slots__ = ('name', 'age')  #只允许tuple定义允许绑定的属性名称
+	
+ss = StudentNew()
+ss.name = "lll"
+ss.age  = 13
+#ss.score = 98 # AttributeError: 'StudentNew' object has no attribute 'score'
 
 
 
