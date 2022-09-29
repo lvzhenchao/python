@@ -94,36 +94,41 @@ s2.score = 30
 s2.score
 
 # 多重继承:一个子类就可以同时获得多个父类的所有功能
+## python 自带很多库使用了MixLn；
+## 例如：TCPServer和UDPServer这两类网络服务
+## 例如：ForkingMixIn和ThreadingMixIn多进程或多线程模型
 class Animal(object):
     pass
 	
-# 新增跑功能
-class Runnable(object):
+### 新增跑功能
+class RunnableMixIn(object):
     def run(self):
         print('Running...')
-# 新增飞功能
-class Flyable(object):
+### 新增飞功能
+class FlyableMixIn(object):
     def fly(self):
         print('Flying...')
-
-# 大类:
+### 肉食动物
+clas CarnivorousMixIn(object):
+	def eat(self):
+		print('eat meat...')
+### 素食动物
+clas HerbivoresMixIn(object):
+	def eat(self):
+		print('eat glass...')
+### 大类:
 class Mammal(Animal):
     pass
-
 class Bird(Animal):
     pass
-
-# 各种动物:
+### 各种动物:
 class Dog(Mammal):
     pass
-
 ## 需要飞功能的，就多继承一个Flyable
-class Bat(Mammal, Flyable):
+class Bat(Mammal, FlyableMixIn):
     pass
-
 class Parrot(Bird):
     pass
-
 class Ostrich(Bird):
     pass
 
