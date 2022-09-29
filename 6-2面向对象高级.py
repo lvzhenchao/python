@@ -43,6 +43,57 @@ ss.name = "lll"
 ss.age  = 13
 #ss.score = 98 # AttributeError: 'StudentNew' object has no attribute 'score'
 
+# 使用@property装饰器，把一个方法变成属性调用
+## 为了防止属性暴露，防止随便改，没办法检查参数
+## @property广泛应用在类的定义中，可以让调用者写出简短的代码，同时保证对参数进行必要的检查，这样，程序运行时就减少了出错的可能性
+class Student1(object):
+
+    def get_score(self):
+         return self._score
+
+    def set_score(self, value):
+        if not isinstance(value, int):
+            raise ValueError('score must be an integer!')
+        if value < 0 or value > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        self._score = value
+
+s = Student1()
+s.set_score(59)
+s.get_score
+
+class Student2(object):
+
+	@property
+	def score(self):
+		return self._score
+
+	@score.setter
+	def score(self, value):
+		if not isinstance(value, int):
+			raise ValueError('score must be an integer!')
+		if value < 0 or value > 100:
+			raise ValueError('score must between 0 ~ 100!')
+		self._score = value
+		
+	@property
+	def birth(self):
+		return self._birth
+	
+	@birth.setter
+	def birth(self, value):
+		self._birth = value
+		
+	#只读属性，只定义getter方法，不定义setter方法就是一个只读属性
+	@property
+	def age(self):
+		return 2022 - self._birth
+		
+s2 = Student2()
+s2.score = 30
+s2.score
+
+
 
 
 
