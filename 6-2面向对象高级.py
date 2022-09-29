@@ -93,7 +93,42 @@ s2 = Student2()
 s2.score = 30
 s2.score
 
+# 多重继承:一个子类就可以同时获得多个父类的所有功能
+class Animal(object):
+    pass
+	
+# 新增跑功能
+class Runnable(object):
+    def run(self):
+        print('Running...')
+# 新增飞功能
+class Flyable(object):
+    def fly(self):
+        print('Flying...')
 
+# 大类:
+class Mammal(Animal):
+    pass
+
+class Bird(Animal):
+    pass
+
+# 各种动物:
+class Dog(Mammal):
+    pass
+
+## 需要飞功能的，就多继承一个Flyable
+class Bat(Mammal, Flyable):
+    pass
+
+class Parrot(Bird):
+    pass
+
+class Ostrich(Bird):
+    pass
+
+bat = Bat()
+bat.fly()
 
 
 
