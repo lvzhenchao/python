@@ -124,7 +124,7 @@ class Bird(Animal):
 ### 各种动物:
 class Dog(Mammal):
     pass
-## 需要飞功能的，就多继承一个Flyable
+## 需要飞功能的，就多继承一个Flyable，多重继承
 class Bat(Mammal, FlyableMixIn):
     pass
 class Parrot(Bird):
