@@ -97,6 +97,7 @@ s2.score
 ## python 自带很多库使用了MixLn；
 ## 例如：TCPServer和UDPServer这两类网络服务
 ## 例如：ForkingMixIn和ThreadingMixIn多进程或多线程模型
+## 不需要复杂而庞大的继承链，只要选择组合不同的类的功能，就可以快速构造出所需的子类
 class Animal(object):
     pass
 	
