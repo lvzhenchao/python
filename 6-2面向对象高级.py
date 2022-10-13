@@ -200,11 +200,26 @@ class Student4(object):
 	def __getattr__(self, attr):
 		if attr == 'score':
 			return 99
+		elif attr == 'age':
+			return 18
 s4 = Student4()
 print(s4.name)
 print(s4.score)
+print(s4.age)
 
-
+## 可以把一个类的所有属性和方法调用全部动态化处理了，不需要任何特殊手段
+## 作用就是，可以针对完全动态的情况作调用。
+## 如果要写SDK，给每个URL对应的API都写一个方法，那得累死，而且，API一旦改动，SDK也要改。
+## 利用完全动态的__getattr__，我们可以写出一个链式调用：
+class Chain(object):
+    def __init__(self, path=''):
+        self._path = path
+    def __getattr__(self, path):
+        return Chain('%s/%s' % (self._path, path))
+    def __str__(self):
+        return self._path
+    __repr__ = __str__
+print(Chain().status.user.timeline.list)
 
 
 
