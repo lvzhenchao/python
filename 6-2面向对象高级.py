@@ -138,7 +138,7 @@ bat.fly()
 
 # 定制类：类似__slots__这种形如__xxx__的变量或者函数名就要注意，这些在Python中是有特殊用途的
 ## __slots__是为了控制类的属性，__len__方法为了让class作用于len()函数
-### __str__
+### __str__：特殊打印控制；打印出来的实例，不但好看，而且容易看出实例内部重要的数据
 class Student3(object):
 	def __init__(self, name):
 		self.name = name
