@@ -162,12 +162,47 @@ class Fib(object):
 		return self # 实例本身就是迭代对象，故返回自己
 	def __next__(self):
 		self.a, self.b = self.b, self.a + self.b 
-		if self.a > 10000:
+		if self.a > 100:
 			raise StopIteration()
 		return self.a
 		
 for n in Fib():
 	print(n)
+	
+## __getitem__ 可以像list那样按照下标取出元素
+class Fib1(object):
+	def __init__(self):
+		self.a, self.b = 0, 1# 初始化两个计数器a, b
+	def __iter__(self):
+		return self # 实例本身就是迭代对象，故返回自己
+	def __next__(self):
+		self.a, self.b = self.b, self.a + self.b 
+		if self.a > 100:
+			raise StopIteration()
+		return self.a
+	def __getitem__(self, n):
+		a, b = 1,1
+		for x in range(n):
+			a,b = b, a + b
+		return a
+
+f = Fib1()
+print(f[2])
+print(f[3])
+print(f[4])
+print(f[5])
+
+## __getattr__调用不存在的方法或属性时
+class Student4(object):
+	def __init__(self):
+		self.name = "lzc"
+		
+	def __getattr__(self, attr):
+		if attr == 'score':
+			return 99
+s4 = Student4()
+print(s4.name)
+print(s4.score)
 
 
 
