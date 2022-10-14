@@ -264,6 +264,8 @@ h.hello()
 print(type(Hello))
 print(type(h))
 
+## metaclass元类
+
 	
 
 
