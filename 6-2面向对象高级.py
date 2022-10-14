@@ -210,6 +210,7 @@ print(s4.age)
 ## 可以把一个类的所有属性和方法调用全部动态化处理了，不需要任何特殊手段
 ## 作用就是，可以针对完全动态的情况作调用。
 ## 如果要写SDK，给每个URL对应的API都写一个方法，那得累死，而且，API一旦改动，SDK也要改。
+
 ## 利用完全动态的__getattr__，我们可以写出一个链式调用：
 class Chain(object):
     def __init__(self, path=''):
@@ -220,6 +221,34 @@ class Chain(object):
         return self._path
     __repr__ = __str__
 print(Chain().status.user.timeline.list)
+
+## __call__添加一个方法，就可以直接对实例进行调用,调用自己本身
+class Student5(object):
+	def __init__(self, name):
+		self.name = name
+	def __call__(self):
+		print('My name is %s.' % self.name)
+s5 = Student5("lzc")
+s5()
+
+# 枚举类
+from enum import Enum
+Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+for name, member in Month.__members__.items():
+    print(name, '=>', member, ',', member.value)
+	
+from enum import Enum, unique
+@unique # 装饰器可以帮助我们检查保证没有重复值
+class Weekday(Enum):
+    Sun = 0 # Sun的value被设定为0
+    Mon = 1
+    Tue = 2
+    Wed = 3
+    Thu = 4
+    Fri = 5
+    Sat = 6
+print(Weekday.Mon)
+	
 
 
 
