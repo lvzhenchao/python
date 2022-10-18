@@ -8,3 +8,19 @@ except ZeroDivisionError as e: # 错误处理代码，执行完except后，如�
 finally:
 	print('finanlly...')
 print('END')
+
+## 可以用多个except语句块处理
+try:
+    print('try...')
+    #r = 10 / int('a')
+    r = 10 / int('2')
+    print('result:', r)
+except ValueError as e:
+    print('ValueError:', e)
+except ZeroDivisionError as e:
+    print('ZeroDivisionError:', e)
+else:
+	print("没毛病")
+finally:
+    print('finally...')
+print('END')
