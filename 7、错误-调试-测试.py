@@ -53,7 +53,7 @@ def bar1():
 		foo1(0)
 	except ValueError as e:
 		print("ValueError!!!")
-		raise
+		raise # 语句如果不带参数，就会把当前错误原样抛出
 bar1()
 
 
