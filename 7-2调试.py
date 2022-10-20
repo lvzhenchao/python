@@ -10,10 +10,19 @@ def foo(s):
 	return 10 / n
 
 def main():
-	foo(0)
+	foo(1)
 main()
 
 ## 第三种：logging 可以输出到文件
+import logging
+
+s = '1'
+n = int(s)
+logging.info('n = %d' % n)
+logging.basicConfig(level = logging.INFO)
+print(10 / n)
+
+## pdb 启动python的调试器pdb，让程序已单步运行，随时查看运行状态
 
 
 
