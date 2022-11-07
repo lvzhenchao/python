@@ -32,6 +32,26 @@ with open('./test.txt', 'r') as f2:
 ## 防止文件过大，内存爆掉；需要反复调用read(size)方法，每次最多读取size个字节；readline()可以每次读取一行内容；readlines()一次读取所有内容并按行返回list
 ## 按需使用
 
+## 像open()函数返回的这种有个read()方法的对象，叫做file-like Object；open方法除了file外，还可以是内存的字节流，网络流，自定义流等
+
+## 二进制文件 rb模式
+#f3 = open('./test.jpg', 'rb')
+#print(f3.read())
+#f3.close()
+
+## 字符编码
+f4 = open('./test.txt', 'r', encoding='gbk', errors='ignore')
+print(f4.read())
+f4.close()
+
+## 写文件
+#f5 = open('./test.txt', 'w')
+f5 = open('./test.txt', 'a')
+f5.write("lvzhenchao123")
+f5.close()
+
+#with open('/test.txt', 'a') as f6:
+#    f6.write('Hello, world!')
 
 
 
