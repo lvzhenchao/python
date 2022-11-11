@@ -14,13 +14,13 @@
 
 ## Unix/Linux 操作系统提供了一个fork()系统调用，非常特殊。普通函数可以调用，调用一次返回一次。但是fork()调用一次，返回两次，因为操作系统自动把当前进程（父进程）复制了一份（子进程），然后在父进程和子进程内返回
 ## 子进程永远返回0，而父进程返回子进程的ID；这样做的理由是，一个父进程可以fork出很多子进程，所以，父进程要记下每个子进程的ID，而子进程只需要调用getppid()就可以拿到父进程的ID。
-
 import os
 
 print('Process (%s) start...' % os.getpid())
 
+# # Only works on Unix/Linux/Mac:
 pid = os.fork()
 if pid == 0:
 	print('子进程 (%s) and 父进程 is %s.' % (os.getpid(), os.getppid()))
 else:
-	print('我创建了一个子进程 (%s).' % (os.getpid(), pid))
+	print('我(%s)创建了一个子进程 (%s).' % (os.getpid(), pid))
