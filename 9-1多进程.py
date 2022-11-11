@@ -16,11 +16,49 @@
 ## 子进程永远返回0，而父进程返回子进程的ID；这样做的理由是，一个父进程可以fork出很多子进程，所以，父进程要记下每个子进程的ID，而子进程只需要调用getppid()就可以拿到父进程的ID。
 import os
 
-print('Process (%s) start...' % os.getpid())
+#print('Process (%s) start...' % os.getpid())
 
-# # Only works on Unix/Linux/Mac:
-pid = os.fork()
-if pid == 0:
-	print('子进程 (%s) and 父进程 is %s.' % (os.getpid(), os.getppid()))
-else:
-	print('我(%s)创建了一个子进程 (%s).' % (os.getpid(), pid))
+## Only works on Unix/Linux/Mac:
+#pid = os.fork()
+#if pid == 0:
+#	print('子进程 (%s) and 父进程 is %s.' % (os.getpid(), os.getppid()))
+#else:
+#	print('我(%s)创建了一个子进程 (%s).' % (os.getpid(), pid))
+	
+# multiprocessing 跨平台的多进程模块
+from multiprocessing import Process
+
+
+# 子进程要执行的代码
+def run_proc(name):
+    print('Run child process %s (%s)...' % (name, os.getpid()))
+
+if __name__=='__main__':
+    print('Parent process %s.' % os.getpid())
+	
+    p = Process(target=run_proc, args=('test',))# 创建一个Process实例
+	
+    print('Child process will start.')
+    p.start() # 方法启动
+    p.join()  # 等待子进程结束后再继续往下运行，通常用于进程间的同步
+    print('Child process end.')
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
