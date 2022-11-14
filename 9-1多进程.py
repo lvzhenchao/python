@@ -25,7 +25,7 @@ import os
 #else:
 #	print('我(%s)创建了一个子进程 (%s).' % (os.getpid(), pid))
 	
-# multiprocessing 跨平台的多进程模块
+# multiprocessing 跨平台的多进程模块：提供了一个Process类来代表一个进程对象
 from multiprocessing import Process
 
 
