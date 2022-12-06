@@ -34,4 +34,54 @@ print(now2)
 print(now - timedelta(days=1))
 print(now + timedelta(days=2, hours=12))
 
+## collections 提供了许多有用的集合类
+
+## namedtuple是一个函数，用创建自定义tuple对象，并且规定了tuple元素的个数；可以方便地定义一种数据类型，具备tuple的不变性，又可以根据属性来引用
+from collections import namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(1, 2)
+print(p.x)
+print(p.y)
+print(isinstance(p, Point))
+print(isinstance(p, tuple))
+
+## deque deque是为了高效实现插入和删除操作的双向列表，适合用于队列和栈;实现list的append()和pop()外，还支持appendleft()和popleft()
+from collections import deque
+q = deque(['a', 'b'])
+q.append('x')
+q.appendleft('y')
+print(q)
+
+## 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
