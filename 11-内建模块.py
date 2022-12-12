@@ -52,7 +52,48 @@ q.append('x')
 q.appendleft('y')
 print(q)
 
-## 
+## defaultdict 这个dict可以在key不存在的时候，返回默认值
+from collections import defaultdict
+dc = defaultdict(lambda: "N/A")
+dc['key1'] = 'abc'
+print(dc['key1'])
+print(dc['key2'])
+
+## OrderedDict 此函数是保持key顺序的dict
+from collections import OrderedDict
+dd = dict([('a', 1), ('b', 2), ('c', 3)])
+print(dd)
+print(dd)
+
+od = OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+print(od)
+od['f'] = 11
+od['d'] = 12
+od['e'] = 13
+print(od) # 按照插入的顺序排列，不是key的本身排序
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
